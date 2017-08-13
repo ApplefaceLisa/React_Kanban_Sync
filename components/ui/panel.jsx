@@ -3,7 +3,7 @@ import CardsContainer from '../containers/cards-container';
 
 export default class Panel extends React.Component {
     render () {
-        const panelClassName = "panel panel-default col-xs-4 " + this.props.filter;
+        const panelClassName = "panel panel-default " + this.props.filter;
       
         return (
             <div className = {panelClassName}>

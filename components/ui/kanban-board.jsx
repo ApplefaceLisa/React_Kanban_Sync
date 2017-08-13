@@ -6,7 +6,7 @@ import AddCard from '../containers/add-card';
 export default class KanbanBoard extends React.Component {
     render() {
         return(
-            <div>
+            <div className="container board-lane">
                 <AddCard />
                 <div className='row'>
                     <Panel
