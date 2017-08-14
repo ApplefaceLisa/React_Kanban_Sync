@@ -7,7 +7,7 @@ export default class App extends React.Component {
     render() {
         return(
             <div className='container'>
-                <div className="page-header"><h1>Kanban Board</h1></div>
+                <div className="page-header">Kanban Board</div>
                 <KanbanBoard />
                 <ModalContainer />
             </div>

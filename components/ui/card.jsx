@@ -58,10 +58,15 @@ export default class Card extends React.Component {
                       onClick = { this.handleRemoveCard.bind(this) } >
                     </span>
                 </div>
+                <div className="card_summary">
+                    <div>Priority: {this.props.card.get('priority')}</div>
+                    <div>Assigned by: {this.props.card.get('assignee')}</div>
+                    <div>Description: {this.props.card.get('description')}</div>
+                </div>
                 <div 
                     className= {className}
                 >
-                    <div>{this.props.card.get('description')}</div>
+                    
                     <TaskList
                         tasks = {this.props.card.get('tasks')}
 

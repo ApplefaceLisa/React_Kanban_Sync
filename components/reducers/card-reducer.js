@@ -10,6 +10,8 @@ const kanbanState = {
             id: 'card1',
             title: 'Read react book',
             description: 'I should read this book before class',
+            priority: 'High',
+            assignee: 'John',
             status: 'in-progress',
             tasks: []
         },
@@ -17,6 +19,8 @@ const kanbanState = {
             id: 'card2',
             title: 'Write some code',
             description: 'Practise my coding skill',
+            priority: 'Medium',
+            assignee: 'Nancy',
             status: 'todo',
             tasks: [
                 {
@@ -48,6 +52,8 @@ const CardRecord = Immutable.Record({
     id: '',
     title: '',
     description: '',
+    priority: '',
+    assignee: '',
     status: '',
     tasks: undefined
 });
@@ -83,6 +89,8 @@ export function reduce(state = createInitialState(), action) {
                 id: uuidv4(),
                 title: cardObj.title,
                 description: cardObj.description,
+                priority: cardObj.priority,
+                assignee: cardObj.assignee,
                 status: cardObj.status,
                 tasks: Immutable.List()
             });
@@ -103,6 +111,8 @@ export function reduce(state = createInitialState(), action) {
             
             return state.setIn([cardIndex, 'title'], cardObj.title)
                         .setIn([cardIndex, 'description'], cardObj.description)
+                        .setIn([cardIndex, 'priority'], cardObj.priority)
+                        .setIn([cardIndex, 'assignee'], cardObj.assignee)
                         .setIn([cardIndex, 'status'], cardObj.status);
         
         case REMOVE_CARD:

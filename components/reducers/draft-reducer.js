@@ -7,6 +7,8 @@ function createInitialState() {
         id: '',
         title: '',
         description: '',
+        priority: '',
+        assignee: '',
         status: 'todo',
         show: false
     });
@@ -23,6 +25,8 @@ export function reduce(state = createInitialState(), action) {
                 return createInitialState().set('id', cardObj.id)
                                            .set('title', cardObj.title)
                                            .set('description', cardObj.description)
+                                           .set('priority', cardObj.priority)
+                                           .set('assignee', cardObj.assignee)
                                            .set('status', cardObj.status)
                                            .set('show', true);
             } else {

@@ -6,12 +6,16 @@ export default class ModalDialog extends React.Component {
         if (title.trim() !== "") {
             const id = this.props.draft.get('id');
             const description = this.props.draft.get('description');
+            const priority = this.props.draft.get('priority');
+            const assignee = this.props.draft.get('assignee');
             const status = this.props.draft.get('status');
             
             if (id === '') {
                 this.props.addCard({
                     title: title,
                     description: description,
+                    priority: priority,
+                    assignee: assignee,
                     status: status
                 });
             } else {
@@ -19,6 +23,8 @@ export default class ModalDialog extends React.Component {
                     id: id,
                     title: title,
                     description: description,
+                    priority: priority,
+                    assignee: assignee,
                     status: status
                 });            
             }
@@ -36,11 +42,20 @@ export default class ModalDialog extends React.Component {
                 <div>
                     <div className = "modal-card">
                         <input 
+                            className = "input-title"
                             type="text"
                             placeholder="Title"
                             value = {draft.get('title')}
                             onChange = {
                                 (evt) => this.props.updateDraft('title', evt.target.value)
+                            }
+                        />
+                        <input 
+                            type="text"
+                            placeholder="Assignee"
+                            value = {draft.get('assignee')}
+                            onChange = {
+                                (evt) => this.props.updateDraft('assignee', evt.target.value)
                             }
                         />
                         <textarea
@@ -50,11 +65,22 @@ export default class ModalDialog extends React.Component {
                                 (evt) => this.props.updateDraft('description', evt.target.value)
                             }
                         />
-                        <div>
+                        <div className = "modal-select">
+                            <label>Priority</label>
+                            <select 
+                              onChange = { (e) => this.props.updateDraft('priority', e.target.value)}
+                            >
+                                <option disabled selected value> -- select -- </option>
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                            <span></span>
                             <label>Status</label>
                             <select 
                               onChange = { (e) => this.props.updateDraft('status', e.target.value)}
                             >
+                                <option disabled selected value> -- select -- </option>
                                 <option value="todo">To Do</option>
                                 <option value="in-progress">In Progress</option>
                                 <option value="done">Done</option>
