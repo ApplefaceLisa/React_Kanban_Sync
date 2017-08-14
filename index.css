@@ -35,7 +35,8 @@ ul {
   border-color: lightgrey;
   border-style: ridge;
   border-radius: 3px;
-  position: absolute;
+  position: relative;
+  margin-bottom: 30px;
 }
 
 .list {
